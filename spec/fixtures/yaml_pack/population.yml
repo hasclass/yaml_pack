@@ -1,0 +1,9 @@
+countries:
+  ch: 
+    population: 8
+  de: 
+    population: 80
+  fr:
+    population: 55
+  it:
+    population: 56

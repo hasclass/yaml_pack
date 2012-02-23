@@ -1,0 +1,9 @@
+countries:
+  ch: 
+    name: Switzerland
+  de: 
+    name: Germany
+  fr:
+    name: France
+  pl:
+    name: Poland

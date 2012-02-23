@@ -1,0 +1,6 @@
+*.gem
+bin/*
+.rspec
+.bundle
+Gemfile.lock
+pkg/*
