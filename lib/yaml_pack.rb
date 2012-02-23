@@ -9,10 +9,6 @@ class YamlPack
   
   attr_reader :files, :base_dir
 
-  def self.load_deep_merged(files, opts = {})
-    new(files, opts).load_deep_merged
-  end
-
   def initialize(files, opts = {})
     @files = [files].flatten
 
@@ -45,7 +41,7 @@ class YamlPack
 
   def content(file_path)
     body   = File.read(file_path) || ""
-    header + body
+    [header, body].join("\n")
   end
 
   def header
@@ -58,7 +54,6 @@ class YamlPack
   end
 
 protected
-
 
   def convert_keys_recursive(result, previous_keys = [])
     if result.is_a?(Hash)
