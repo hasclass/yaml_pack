@@ -1,7 +1,7 @@
 require 'core_ext/hash'
 
 class YamlPack
-  VERSION = "0.0.1.alpha"
+  VERSION = "0.0.1.beta"
 
   KEY_CONVERTERS = {
     :symbolize => Proc.new{|key, previous_keys| key.respond_to?(:to_sym) ? key.to_sym : key }
