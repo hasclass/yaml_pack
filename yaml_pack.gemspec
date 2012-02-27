@@ -4,7 +4,7 @@ require "yaml_pack"
 
 Gem::Specification.new do |s|
   s.name        = "yaml_pack"
-  s.version     = YamlPack::VERSION
+  s.version     = YamlPack::Version::VERSION
   s.authors     = ["sebastian"]
   s.email       = ["sebastian.burkhard@gmail.com"]
   s.homepage    = ""

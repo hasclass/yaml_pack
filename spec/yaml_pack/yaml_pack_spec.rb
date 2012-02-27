@@ -77,15 +77,4 @@ describe YamlPack do
     result['countries']['se']['name'].should == 'Sweden'
   end
 
-
-  it "#subfolders" do
-    YamlPack.subfolders("/foo/", "/foo/baz.yml").should == []
-    YamlPack.subfolders("/foo/", "/foo/bar/baz.yml").should == ['bar']
-    YamlPack.subfolders("/foo/", "/foo/bar/baz/lorem.yml").should == ['bar', 'baz']
-
-    YamlPack.subfolders("foo/", "foo/bar/baz.yml").should == ['bar']
-    YamlPack.subfolders("/foo", "/foo/baz.yml").should == []
-    YamlPack.subfolders("", "/foo/baz.yml").should == ['foo']
-    YamlPack.subfolders(nil, "/foo/baz.yml").should == ['foo']
-  end
 end
