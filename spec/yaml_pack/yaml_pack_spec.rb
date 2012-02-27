@@ -57,6 +57,15 @@ describe YamlPack do
     result['countries']['ch']['name'].should == 'Schweiz'
   end
 
+  it "#include_file properly includes files" do
+    files = [
+      'spec/fixtures/yaml_pack/include_file.yml'
+    ]
+    
+    result = YamlPack.new(files).load_deep_merged
+    result['countries']['ch']['name'].should == 'Switzerland'
+  end
+
   it "replicate nesting of subfolders into resulting hash" do
     files = [
       'spec/fixtures/yaml_pack/names.yml',

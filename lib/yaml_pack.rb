@@ -1,7 +1,7 @@
 require 'core_ext/hash'
 
 class YamlPack
-  VERSION = "0.0.1.beta"
+  VERSION = "0.0.2.alpha"
 
   KEY_CONVERTERS = {
     :symbolize => Proc.new{|key, previous_keys| key.respond_to?(:to_sym) ? key.to_sym : key }
@@ -37,6 +37,17 @@ class YamlPack
     end
 
     hsh
+  end
+
+  # Include the contents of given file into yaml template.
+  # Use this inside your yaml-file.
+  #
+  #    <%= include_file('/path/to/file.yml') %>
+  #
+  # DEBT: extract into own module/class
+  #
+  def include_file(file_path)
+    File.read(file_path)
   end
 
   def content(file_path)
