@@ -27,7 +27,7 @@ class YamlPack
       content = ERB.new(content).result(binding) if @with_erb
       
       result = YAML::load(content) || {}
-      result = prepend_subfolders(f, result) if @base_dir
+      result = add_subfolders_as_namespaces(f, result) if @base_dir
       result = convert_keys_recursive(result) if @key_converter
       
       Util.deep_merge!(hsh, result)
@@ -71,13 +71,9 @@ protected
     end
   end
 
-  def prepend_subfolders(file_path, object)
-    subfolders(file_path).inject(object) do |object, subfolder|
+  def add_subfolders_as_namespaces(file_path, object)
+    Util.subfolders(base_dir, file_path).inject(object) do |object, subfolder|
       {subfolder => object}
     end
-  end
-
-  def subfolders(file_path)
-    Util.subfolders(base_dir, file_path)
   end
 end
