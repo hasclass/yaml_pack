@@ -5,7 +5,7 @@ class YamlPack::Util
     file_path.gsub(/^#{base_dir}/, '').split('/')[0...-1]
   end
 
-  # Deep merge method. Silly name prevents overwriting other implementations.
+  # Deep merge method. 
   #
   # Inspired from:
   # http://www.gemtacular.com/gemdocs/cerberus-0.2.2/doc/classes/Hash.html
