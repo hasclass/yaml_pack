@@ -13,7 +13,7 @@ class YamlPack::Util
   def self.deep_merge!(first, second)
     second.each_pair do |k,v|
       if first[k].is_a?(Hash) and second[k].is_a?(Hash)
-        first[k].yaml_pack_deep_merge!(second[k])
+        deep_merge!(first[k], second[k])
       else
         first[k] = second[k]
       end
