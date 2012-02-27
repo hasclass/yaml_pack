@@ -5,4 +5,18 @@ class YamlPack::Util
     file_path.gsub(/^#{base_dir}/, '').split('/')[0...-1]
   end
 
+  # Deep merge method. Silly name prevents overwriting other implementations.
+  #
+  # Inspired from:
+  # http://www.gemtacular.com/gemdocs/cerberus-0.2.2/doc/classes/Hash.html
+  # File lib/cerberus/utils.rb, line 42
+  def self.deep_merge!(first, second)
+    second.each_pair do |k,v|
+      if first[k].is_a?(Hash) and second[k].is_a?(Hash)
+        first[k].yaml_pack_deep_merge!(second[k])
+      else
+        first[k] = second[k]
+      end
+    end
+  end
 end

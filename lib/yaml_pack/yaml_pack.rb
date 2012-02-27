@@ -30,7 +30,7 @@ class YamlPack
       result = prepend_subfolders(f, result) if @base_dir
       result = convert_keys_recursive(result) if @key_converter
       
-      hsh.yaml_pack_deep_merge!(result)
+      Util.deep_merge!(hsh, result)
     end
 
     hsh
