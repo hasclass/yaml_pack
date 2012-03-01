@@ -24,7 +24,11 @@ class YamlPack
     
     files.select{|f| File.exists?(f) }.each do |f|
       content = self.content(f)
-      content = ERB.new(content).result(binding) if @with_erb
+      begin
+        content = ERB.new(content).result(binding) if @with_erb
+      rescue => e 
+        raise "Error in #{f}: #{e.message}"
+      end
       
       result = YAML::load(content) || {}
       result = add_subfolders_as_namespaces(f, result) if @base_dir
